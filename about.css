@@ -1,0 +1,96 @@
+/* =====================================================
+   PÁGINA ABOUT: tarjeta de identidad, texto y formulario
+   ===================================================== */
+.about{max-width:860px}
+
+/* ---------- tarjeta (flexbox) ---------- */
+.about .id{
+  position:relative;display:flex;align-items:flex-start;gap:32px;
+  padding:28px 30px 30px;background:#f5f0e6;color:#1a1a1a;border-radius:14px;
+  border:1px solid rgba(0,0,0,.08);transform:rotate(-1deg);
+  box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 16px 36px rgba(120,20,70,.2),0 2px 6px rgba(0,0,0,.12);
+}
+.about .id-info{flex:1 1 0;min-width:0}
+.about .id-brand{margin:0 0 8px;font:700 24px/1 var(--helv);letter-spacing:-.045em}
+.about .id-sub{margin:0 0 30px;max-width:30ch;font:400 11px/1.5 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+
+.about .id-fields{margin:0}
+.about .id-fields div{display:flex;align-items:baseline;gap:10px;margin:0 0 16px}
+.about .id-fields dt{flex:none;font:400 12px/1 var(--mono);letter-spacing:.04em}
+.about .id-fields dd{
+  flex:1;margin:0;padding:0 6px 1px;border-bottom:1px solid #1a1a1a;
+  font:400 15px/1.5 var(--mono);color:var(--ink);
+}
+.about .id-no{margin:26px 0 0;font:700 12px/1 var(--mono);letter-spacing:.04em}
+
+/* foto con marco de fotomatón */
+.about .id-photo{position:relative;flex:0 0 210px;padding:14px}
+.about .id-photo::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background-repeat:no-repeat;
+  background-image:
+    linear-gradient(#111,#111),linear-gradient(#111,#111),linear-gradient(#111,#111),linear-gradient(#111,#111),
+    linear-gradient(#111,#111),linear-gradient(#111,#111),linear-gradient(#111,#111),linear-gradient(#111,#111);
+  background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom;
+  background-size:24px 3px,3px 24px,24px 3px,3px 24px,24px 3px,3px 24px,24px 3px,3px 24px;
+}
+.about .id-photo figure{
+  position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;
+  background:#ddd6c8;border:3px solid #111;
+}
+.about .id-photo span{
+  position:absolute;left:0;right:0;bottom:12px;text-align:center;
+  font:italic 400 11px/1 var(--mono);letter-spacing:.06em;color:#7a7468;
+}
+.about .id-photo img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.05);   /* ← borra esta línea si quieres la foto a color */
+}
+
+/* sello */
+.about .stamp{
+  position:absolute;right:-22px;bottom:-40px;width:116px;height:116px;
+  color:var(--fucsia);opacity:.8;mix-blend-mode:multiply;transform:rotate(-14deg);pointer-events:none;
+}
+
+/* ---------- texto + formulario (flexbox) ---------- */
+.about .rest{display:flex;align-items:flex-start;gap:56px;margin-top:64px}
+.about .me,.about .contact{flex:1 1 0;min-width:0}
+.about .bio{margin:0 0 18px;max-width:42ch}
+
+.about .links{list-style:none;margin:26px 0 0;padding:0;font:700 11px/1.7 var(--mono)}
+.about .links a{color:inherit;text-decoration:none}
+.about .links a:hover,.about .links a:focus-visible{color:var(--fucsia);outline:none}
+
+.about .contact{
+  padding:16px 18px 18px 22px;border:1px solid rgba(0,0,0,.45);border-left:12px solid var(--fucsia);
+  background:rgba(255,255,255,.4);
+}
+.about .ttl{margin:0 0 12px;font:400 13px/1 var(--mono);letter-spacing:.04em}
+.about .contact input,.about .contact textarea{
+  display:block;width:100%;margin:0 0 12px;padding:4px 0;
+  border:0;border-bottom:1px solid rgba(0,0,0,.3);border-radius:0;background:transparent;
+  font:400 13px/1.4 var(--mono);color:var(--ink);resize:none;
+}
+.about .contact input:focus,.about .contact textarea:focus{outline:none;border-bottom-color:var(--fucsia)}
+.about .contact ::placeholder{color:rgba(0,0,0,.65)}
+.about .contact button{
+  display:block;margin-left:auto;padding:5px 14px;border:0;border-radius:0;
+  background:var(--fucsia);color:#fff;font:400 12px/1.4 var(--mono);letter-spacing:.06em;
+}
+.about .contact button:hover{filter:brightness(1.1)}
+
+/* ---------- fondo rosado (igual que las otras páginas) con píxeles negros (about.js) ---------- */
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;filter:blur(1.2px)}
+
+/* ---------- mobile ---------- */
+@media (max-width:700px){
+  .about .id{flex-direction:column;align-items:stretch;padding:22px 20px 26px;transform:none}
+  .about .id-info{flex:none}
+  .about .id-photo{order:-1;flex:none;width:62%}
+  .about .stamp{width:92px;height:92px;right:-6px;bottom:-30px}
+  .about .id-fields dd{font-size:13px}
+  .about .rest{flex-direction:column;align-items:stretch;gap:34px;margin-top:56px}
+  .about .me,.about .contact{flex:none}
+  /* 16px evita que el iPhone haga zoom automático al tocar un campo */
+  .about .contact input,.about .contact textarea{font-size:16px}
+}

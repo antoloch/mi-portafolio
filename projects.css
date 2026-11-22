@@ -1,0 +1,82 @@
+/* ===== PROJECTS: planos de vidrio en 3D ===== */
+
+/* fondo rosado, grano y viñeta del Home (heredados de styles.css), pero DETRÁS de las fotos */
+body.page-projects::before,
+body.page-projects::after{z-index:0}
+
+.stage{
+  position:fixed;inset:0;overflow:hidden;z-index:1;
+  touch-action:none;user-select:none;
+}
+.sc{
+  position:absolute;inset:0;
+  perspective:1500px;
+}
+
+/* cada plano = una foto de proyecto */
+.pn{
+  position:absolute;
+  background-color:#d9d9d9;
+  background-size:cover;
+  background-position:center;
+  border:1px solid #ffffffaa;
+  box-shadow:0 0 0 1px #0001;
+  will-change:transform,opacity,filter;
+}
+.pn > span{
+  position:absolute;left:8px;top:8px;
+  font:400 9px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;
+  color:#fff;mix-blend-mode:difference;
+}
+
+/* grosor del vidrio: un canto fino hacia la derecha y abajo + sombra suave */
+.pn{--T:4px}
+.pn{
+  box-shadow:
+    calc(var(--T)*.25) calc(var(--T)*.25) 0 #f4f4f4,
+    calc(var(--T)*.5)  calc(var(--T)*.5)  0 #e3e3e3,
+    calc(var(--T)*.75) calc(var(--T)*.75) 0 #cfcfcf,
+    var(--T)           var(--T)           0 #bcbcbc,
+    calc(var(--T)*3) calc(var(--T)*4) 22px #1112;
+}
+
+/* contador abajo a la izquierda */
+.ctr{position:absolute;left:16px;bottom:max(14px,env(safe-area-inset-bottom));z-index:5;font:400 11px/1 var(--mono);letter-spacing:.06em}
+
+/* lista de proyectos (INDEX) */
+.ix{
+  position:absolute;inset:0;z-index:4;display:none;
+  background:#ffffffee;padding:80px 16px 60px;overflow:auto;touch-action:pan-y;overscroll-behavior:contain;
+  font:500 clamp(16px,2.2vw,24px)/1.5 var(--helv);letter-spacing:-.02em;
+}
+.ix.o{display:block}
+.ix a{display:block;color:inherit;text-decoration:none;transition:color .15s ease}
+.ix a:hover,.ix a:focus-visible{color:var(--fucsia);outline:none}
+
+/* aviso al hacer clic en el plano activo */
+.tst{
+  position:absolute;left:50%;bottom:48px;transform:translateX(-50%);z-index:6;
+  font:400 10px/1 var(--mono);background:var(--ink);color:#fff;
+  padding:6px 12px;opacity:0;transition:opacity .3s;white-space:nowrap;pointer-events:none;
+}
+
+/* nombre del proyecto junto al cursor rosado */
+#cursor .label{
+  position:absolute;left:10px;top:18px;white-space:nowrap;
+  font:700 10px/1.3 var(--mono);color:var(--ink);
+}
+
+@media (max-width:700px){
+  .sc{perspective:900px}
+  .ctr{left:16px}
+}
+/* Navegación entre proyectos */
+.project-navigation {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.project-navigation a {
+  margin-left: auto;
+}

@@ -1,0 +1,38 @@
+/* 
+   página de cada proyecto (proyecto-01.html ... proyecto-08.html)
+    */
+
+.detail .num{margin:0 0 14px;font:400 11px/1 var(--mono);letter-spacing:.06em}
+.detail h1{margin:0 0 24px;font:700 clamp(32px,6vw,72px)/.95 var(--helv);letter-spacing:-.045em}
+.detail h1 .year{
+  font:400 .3em/1 var(--mono);   /* tamaño: 30% del título, en Courier Prime */
+  letter-spacing:.06em;
+  margin-left:.6em;
+}
+
+/* descripción: el texto corre a lo ancho de la pantalla y cada párrafo va debajo del anterior */
+.detail .desc-cols{margin-bottom:40px}
+.detail .desc-cols .desc{max-width:none;margin:0 0 18px}
+
+/* galería (flexbox): la primera foto ocupa todo el ancho y las demás van de a dos */
+.gallery{display:flex;flex-wrap:wrap;gap:12px}
+.gallery figure{
+  flex:1 1 calc(50% - 6px);margin:0;position:relative;overflow:hidden;
+  aspect-ratio:4/5;background:#d9d9d9;border:1px solid #ffffffaa;
+}
+.gallery figure:first-child{flex-basis:100%;aspect-ratio:16/10}
+.gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* enlaces al proyecto anterior / siguiente */
+.step{display:flex;justify-content:space-between;gap:24px;margin-top:48px}
+.step a{
+  font:400 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;transition:color .16s ease;
+}
+.step a.right{margin-left:auto}
+.step a:hover,.step a:focus-visible{color:var(--fucsia);outline:none}
+
+/* mobil*/
+@media (max-width:700px){
+  .gallery figure,.gallery figure:first-child{flex-basis:100%;aspect-ratio:4/5}
+}

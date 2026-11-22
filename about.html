@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — Anto Loch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="cursor.css">
+<link rel="stylesheet" href="pages.css">
+<link rel="stylesheet" href="about.css">
+</head>
+<body class="page-about">
+
+<canvas id="rain" aria-hidden="true"></canvas>
+
+<header class="top">
+  <a class="brand" href="index.html">ANTO LOCH</a>
+  <nav class="menu" aria-label="Principal">
+    <a href="projects.html">PROJECTS</a>
+    <a href="projects.html#index" id="nav-index">INDEX</a>
+    <a href="about.html" class="is-current">ABOUT</a>
+  </nav>
+</header>
+
+<main class="about">
+  <h1 class="sr-only">Antonia Loch — Sobre mí</h1>
+
+  <!-- ===== TARJETA DE IDENTIDAD ===== -->
+  <section class="id">
+    <div class="id-info">
+      <p class="id-brand">ANTO LOCH</p>
+      <p class="id-sub">La persona titular de esta tarjeta es estudiante de Diseño Industrial</p>
+
+      <dl class="id-fields">
+        <div><dt>NOMBRE:</dt><dd>Antonia Loch</dd></div>
+        <div><dt>ESTUDIA:</dt><dd>Diseño Industrial</dd></div>
+        <div><dt>TRABAJA CON:</dt><dd>Fabricación digital, cerámica, madera y electrónica</dd></div>
+      </dl>
+
+      <p class="id-no">ID No. 1301</p>
+    </div>
+
+    <!-- TU FOTO: guárdala como images/about.jpg -->
+    <div class="id-photo">
+      <figure>
+        <span>FOTO MÍA</span>
+        <img src="images/about.png" alt="Antonia Loch" onerror="this.remove()">
+      </figure>
+    </div>
+
+    <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+      <defs><path id="sp" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+      <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="1"/>
+      <text font-size="11" font-weight="700" fill="currentColor" font-family="Courier Prime, monospace"><textPath href="#sp" textLength="268" lengthAdjust="spacing">DISEÑO INDUSTRIAL • ANTO LOCH •</textPath></text>
+      <text x="60" y="67" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="Helvetica, Arial, sans-serif">A.L.</text>
+    </svg>
+  </section>
+
+  <!-- ===== SOBRE MÍ + CONTACTO ===== -->
+  <div class="rest">
+
+    <section class="me">
+      <p class="bio">Hola, soy Antonia Loch, estudiante de Diseño Industrial.</p>
+      <p class="bio">Mi trabajo explora la relación entre materialidad, fabricación y tecnología a través de proyectos de fabricación digital, cerámica, madera y electrónica. Me interesa desarrollar objetos y experiencias que surjan de la observación, la experimentación y el trabajo directo con los materiales.</p>
+      <ul class="links">
+        <li>GIT - <a href="https://github.com/antoloch" target="_blank" rel="noopener">github.com/antoloch</a></li>
+        <li>IG - <a href="https://instagram.com/antolochdesign" target="_blank" rel="noopener">@antolochdesign</a></li>
+      </ul>
+    </section>
+
+    <form class="contact" id="contact">
+      <p class="ttl">ESCRÍBEME</p>
+      <label class="sr-only" for="c-name">Nombre</label>
+      <input type="text" id="c-name" placeholder="Nombre" required>
+      <label class="sr-only" for="c-mail">Email</label>
+      <input type="email" id="c-mail" placeholder="Email" required>
+      <label class="sr-only" for="c-msg">Mensaje</label>
+      <textarea id="c-msg" rows="3" placeholder="mensaje" required></textarea>
+      <button type="submit">ENVIAR →</button>
+    </form>
+
+  </div>
+
+</main>
+
+<script>
+  /* al apretar ENVIAR se abre el correo del visitante con el mensaje listo */
+  var CORREO = 'antolochm@gmail.com';
+  document.getElementById('contact').addEventListener('submit', function(e){
+    e.preventDefault();
+    var n = document.getElementById('c-name').value,
+        m = document.getElementById('c-mail').value,
+        t = document.getElementById('c-msg').value;
+    location.href = 'mailto:' + CORREO + '?subject=' + encodeURIComponent('Mensaje de ' + n) +
+                    '&body=' + encodeURIComponent(t + '\n\n' + n + ' — ' + m);
+  });
+</script>
+
+<div id="cursor" aria-hidden="true"></div>
+<script src="about.js"></script>
+<script src="cursor.js"></script>
+</body>
+</html>
